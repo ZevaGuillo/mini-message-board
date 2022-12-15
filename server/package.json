@@ -5,8 +5,9 @@
   "main": "app.js",
   "license": "MIT",
   "scripts":{
-    "start": "node dist/app.js",
-    "build":"tsc"
+    "build":"tsc",
+    "start": " node dist/app.js",
+    "deploy": "yarn build && yarn start"
   },
   "dependencies": {
     "@types/express": "^4.17.15",
