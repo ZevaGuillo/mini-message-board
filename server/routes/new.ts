@@ -1,10 +1,10 @@
 import {Router} from 'express'
-import { getNew } from '../controllers/new';
+import { getMessages, newMessage } from '../controllers/new';
 
 const router = Router();
 
+router.get('/',getMessages);
 
-router.get('/',getNew);
-
+router.post('/', newMessage);
 
 export default router;

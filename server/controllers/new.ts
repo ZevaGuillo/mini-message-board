@@ -1,7 +1,13 @@
 import {Request, Response} from 'express'
 
-export const getNew = (req: Request, res: Response)=>{
+export const getMessages = (req: Request, res: Response)=>{
     res.json({
-        msg: 'getUsuarios'
+        msg: 'Lista de mensajes'
+    })
+}
+
+export const newMessage = (req: Request, res: Response)=> {
+    res.json({
+        msg: 'Nuevo mensaje'
     })
 }
