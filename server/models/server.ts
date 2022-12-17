@@ -1,5 +1,7 @@
 import express, { Application } from 'express';
+import cors from 'cors';
 import newRouter from '../routes/new';
+import { dbConnection } from '../database/config';
 
 class Server {
 
@@ -13,13 +15,20 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
 
+        this.DBConnection();
+
         this.middlewares();
 
         this.routes();
     }
 
+    async DBConnection(){
+        await dbConnection()
+    }
+
     middlewares() {
         this.app.use(express.json());
+        this.app.use(cors())
     }
 
     routes(){
