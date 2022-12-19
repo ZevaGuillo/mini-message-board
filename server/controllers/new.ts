@@ -1,9 +1,16 @@
 import { Request, Response } from 'express'
 import Message from '../models/message'
 
-export const getMessages = (req: Request, res: Response) => {
+export const getMessages = async (req: Request, res: Response) => {
+
+    const { limit = 10, since = 0 } = req.query;
+
+    const messages = await Message.find()
+        .skip(Number(since))
+        .limit(Number(limit))
+
     res.json({
-        msg: 'Lista de mensajes'
+        messages
     })
 }
 
@@ -25,7 +32,7 @@ export const newMessage = async (req: Request, res: Response) => {
             msg: 'Created new message',
             messageDB
         })
-        
+
     } catch (error) {
         console.log(error);
 
