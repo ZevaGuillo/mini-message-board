@@ -7,7 +7,7 @@ const Board = () => {
 
     useEffect(() => {
         getMessage().then((data)=>setMessages(data))
-        console.log(messages);
+        console.log(messages,33);
         
     }, [])
     
