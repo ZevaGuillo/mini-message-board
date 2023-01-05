@@ -24,11 +24,12 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Outfit', sans-serif;
       font-size: 14px;
       line-height: 17.64px;
-      background-color: var(--dark);
+      background-color: var(--white-bg);
       font-family: 'Lato', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
    }
 
    h1,h2,h3,h4,h5,h6{
@@ -36,5 +37,15 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Syne', sans-serif;
    }
 
+   .pattern{
+      position: absolute;
+      bottom: 5rem;
+      right: -6rem;
+   }
+   .pattern-2{
+      position: absolute;
+      top: -5rem;
+      left: -5rem;
+   }
   
 `;

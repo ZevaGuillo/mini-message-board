@@ -7,6 +7,7 @@ import { getMessage } from "./service/message";
 import Loading from "./components/Loading";
 import Card from "./components/Card";
 import styled from "styled-components";
+import SvgPattern from "./components/SvgPattern";
 
 function App() {
   const [messages, setMessages] = useState<Message[]>();
@@ -23,6 +24,8 @@ function App() {
   return (
     <main className="App">
       <GlobalStyle />
+      <SvgPattern className="pattern"/>
+      <SvgPattern className="pattern-2"/>
       <Card>
         <StyledConent>
           <h1 className="animate__fadeInUp">Mini Message Board</h1>
@@ -44,10 +47,11 @@ function App() {
 
 const StyledConent = styled.main`
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+
 
   .main-content{
     flex: 1;

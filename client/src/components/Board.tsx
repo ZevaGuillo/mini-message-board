@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getMessage } from "../service/message";
 import { Message } from "../types/messageType";
+import { getRandomColor } from "../utils/getColor";
 
 type BoardProps = {
   messages: Message[] | undefined;
@@ -16,7 +17,10 @@ const Board = ({ messages }: BoardProps) => {
           {messages.map(message => (
             <div
               key={message._id}
-              className="messages messages-animate">
+              className="messages messages-animate"
+              style={{
+                backgroundColor: getRandomColor()
+              }}>
               <h3>{message.username}</h3>
               <p>{message.text}</p>
             </div>

@@ -28,14 +28,15 @@ const StyledCard = styled.div`
   height: 90vh;
   position: relative;
   margin: 0 auto;
-  background-color: #f8fbfe;
+  background-color: var(--white);
   border-radius: 8px;
   z-index: 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .tools {
     position: absolute;
-    border-radius: 8px 8px 0 0 ;
-    background: white;
+    border-radius: 8px 8px 0 0;
+    background: #2F283B;
     width: 100%;
     display: flex;
     align-items: center;
