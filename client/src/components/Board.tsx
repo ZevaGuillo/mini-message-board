@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getMessage } from "../service/message";
 import { Message } from "../types/messageType";
 import { getRandomColor } from "../utils/getColor";
-
 type BoardProps = {
   messages: Message[] | undefined;
 };
@@ -15,7 +12,18 @@ const Board = ({ messages }: BoardProps) => {
       <div
         key={message._id}
         className="messages-animate">
-        <h3>{message.username}</h3>
+        <div className="message-header">
+          <h3>{message.username}</h3>
+          <p>
+            {new Date(message.added).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
+        </div>
         <p
           className="message"
           style={{
@@ -42,8 +50,8 @@ const StyledBoard = styled.main`
     padding: 0.5rem 1rem;
     overflow: hidden;
   }
-  h3{
-    padding-bottom:.5rem ;
+  h3 {
+    padding-bottom: 0.5rem;
   }
   .message {
     color: #363f4d;
@@ -61,7 +69,7 @@ const StyledBoard = styled.main`
     &::after {
       content: "";
       bottom: 98%;
-      left: .7rem;
+      left: 0.7rem;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -71,6 +79,15 @@ const StyledBoard = styled.main`
       border-bottom-color: inherit;
       border-width: 7px;
       margin-left: -7px;
+    }
+  }
+  .message-header {
+    display: flex;
+    p {
+      flex: 1;
+      text-align: end;
+      padding-left: 0.5rem;
+      opacity: 0.4;
     }
   }
   .messages-animate {
