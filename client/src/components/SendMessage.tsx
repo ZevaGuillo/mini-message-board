@@ -1,5 +1,6 @@
 import { Formik, Field, Form } from "formik";
 import { FormikHelpers } from "formik/dist/types";
+import styled from "styled-components";
 import { createMessage } from "../service/message";
 import { Message } from "../types/messageType";
 import Button from "./Button";
@@ -30,7 +31,7 @@ const SendMessage = ({ setMessages }: SendMessageProps) => {
   };
 
   return (
-    <div>
+    <StyledSendMessage>
       <Formik
         initialValues={initialValues}
         validate={values => {
@@ -49,18 +50,21 @@ const SendMessage = ({ setMessages }: SendMessageProps) => {
         onSubmit={handleSubmit}>
         {({ isSubmitting, errors }) => (
           <Form>
-            <Input
-              id="username"
-              name="username"
-              placeholder="Username"
-            />
-            {errors.username ? <div>{errors.username}</div> : null}
-            <Input
-              id="text"
-              name="text"
-              placeholder="Message"
-            />
-            {errors.text ? <div>{errors.text}</div> : null}
+            <div className="inputs">
+              <Input
+                id="username"
+                name="username"
+                placeholder="Username"
+                className={errors.username ? 'error': ''}
+              />
+              {}
+              <Input
+                id="text"
+                name="text"
+                placeholder="Message"
+                className={errors.text ? 'error': ''}
+              />
+            </div>
             <Button
               type="submit"
               disabled={isSubmitting}
@@ -68,8 +72,18 @@ const SendMessage = ({ setMessages }: SendMessageProps) => {
           </Form>
         )}
       </Formik>
-    </div>
+    </StyledSendMessage>
   );
 };
+
+const StyledSendMessage = styled.div`
+  padding: 1rem 0;
+  form{
+    display: flex;
+  }
+  .inputs{
+    flex: 1;
+  }
+`;
 
 export default SendMessage;

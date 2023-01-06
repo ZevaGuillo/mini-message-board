@@ -51,10 +51,13 @@ const StyledConent = styled.main`
   flex-direction: column;
   justify-content: space-between;
 
-
+  h1{
+    padding: 1rem 0;
+  }
 
   .main-content{
     flex: 1;
+    overflow: auto;
   }
   .loading{
     display: flex;

@@ -6,7 +6,27 @@ export const GlobalStyle = createGlobalStyle`
    :root{
       --white-bg: #F2F3F7;
       --white: #FFFFFF;
-      --dark: #00132B;
+      --dark: #2F283B;
+      --thumb-bg: #d2d2e0;
+   }
+
+   ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      background: var(--thumb-bg);
+      border-radius: var(--radius);
+   }
+
+   ::-webkit-scrollbar-thumb:active,
+   ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark);
+   }
+
+   ::-webkit-scrollbar-track {
+      background: #80808014;
    }
     
    * {

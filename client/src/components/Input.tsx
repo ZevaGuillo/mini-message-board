@@ -2,16 +2,17 @@ import { Field } from "formik";
 import styled from "styled-components";
 
 type InputProps = {
-    id: string,
-    name: string,
-    placeholder: string
-}
+  id: string;
+  name: string;
+  placeholder: string;
+  className?: string;
+};
 
-const Input = ({id, name, placeholder}:InputProps) => {
+const Input = ({ id, name, placeholder, className="" }: InputProps) => {
   return (
-    <StyledInput className="form">
+    <StyledInput className={className}>
       <Field
-        className="input"
+        className={`input ${className}`}
         id={id}
         name={name}
         placeholder={placeholder}
@@ -22,13 +23,23 @@ const Input = ({id, name, placeholder}:InputProps) => {
 };
 
 const StyledInput = styled.div`
-  --width-of-input: 200px;
+  --width-of-input: 100%;
   --border-height: 1px;
   --border-before-color: rgba(221, 221, 221, 0.39);
-  --border-after-color: #5891ff;
-  --input-hovered-color: #4985e01f;
+  --border-after-color: #434b5c;
+  --input-hovered-color: #6062641f;
   position: relative;
   width: var(--width-of-input);
+
+  &.error::after{
+    content: 'Required';
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: salmon;
+    opacity: .7;
+  }
 
   /* styling of Input */
   .input {
@@ -41,6 +52,12 @@ const StyledInput = styled.div`
     padding-block: 0.7em;
     border: none;
     border-bottom: var(--border-height) solid var(--border-before-color);
+  }
+  .input.error{
+    border-bottom: var(--border-height) solid salmon;
+  }
+  .input.error::after{
+    content: 'd';
   }
   /* styling of animated border */
   .input-border {
@@ -64,11 +81,6 @@ const StyledInput = styled.div`
   input:focus ~ .input-border {
     width: 100%;
   }
-  /* === if you want to do animated border on typing === */
-  /* remove input:focus code and uncomment below code */
-  /* input:valid ~ .input-border{
-  width: 100%;
-} */
 `;
 
 export default Input;

@@ -18,25 +18,39 @@ const Card = ({ children }: Cardprops) => {
           <span className="green box"></span>
         </div>
       </div>
+      <div className="attribution">
+        Coded by{" "}
+        <a
+          className="github"
+          href="https://github.com/ZevaGuillo"
+          target="_blank"
+          rel="noopener noreferrer">
+          <i
+            className="fab fa-github"
+            aria-hidden="true"></i>{" "}
+          ZevaGuillo
+        </a>
+      </div>
       <div className="card__content">{children}</div>
     </StyledCard>
   );
 };
 
 const StyledCard = styled.div`
-  width: 80vw;
+  width: 95vw;
   height: 90vh;
   position: relative;
   margin: 0 auto;
   background-color: var(--white);
   border-radius: 8px;
   z-index: 1;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .tools {
     position: absolute;
     border-radius: 8px 8px 0 0;
-    background: #2F283B;
+    background: #2f283b;
     width: 100%;
     display: flex;
     align-items: center;
@@ -64,6 +78,18 @@ const StyledCard = styled.div`
 
     .green {
       background-color: #00ca4e;
+    }
+  }
+  .attribution {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaa2c9;
+    a {
+      padding-left: .2rem;
+      text-decoration: none;
+      color: #dab3b4;
     }
   }
 

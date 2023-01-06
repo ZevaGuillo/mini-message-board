@@ -23,17 +23,32 @@ const Button = ({ type, disabled }: ButtonProps) => {
 const StyledButton = styled.button`
   background: none;
   border: none;
-  padding: 15px 15px;
+  padding: 20px 20px;
   border-radius: 10px;
-  background-color: black;
+  background-color: var(--white);
+  cursor: pointer;
+  transition: 0.5s all ease-out;
 
   &:hover {
-    background: rgba(116, 77, 77, 0.774);
-    transition: 0.5s;
+    background: #ffffff;
+    box-shadow: 10px 10px 20px #ededed, -10px -10px 20px #ffffff;
+  }
+  & svg {
+    fill: var(--dark);
   }
 
-  & svg {
-    fill: #fff;
+  &:hover svg {
+    fill: #504464;
+  }
+
+  &:disabled {
+    background: linear-gradient(145deg, #f0efef, #ffffff);
+    box-shadow: 6px 6px 12px #f3f3f3, -6px -6px 12px #f1eded;
+  }
+
+  &:disabled svg {
+    cursor: wait;
+    fill: #cac9c9;
   }
 `;
 

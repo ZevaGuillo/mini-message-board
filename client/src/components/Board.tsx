@@ -9,30 +9,69 @@ type BoardProps = {
 };
 
 const Board = ({ messages }: BoardProps) => {
+  const showMessages = messages?.map(message => {
+    let color = getRandomColor();
+    return (
+      <div
+        key={message._id}
+        className="messages-animate">
+        <h3>{message.username}</h3>
+        <p
+          className="message"
+          style={{
+            backgroundColor: color,
+            borderColor: color,
+          }}>
+          {message.text}
+        </p>
+      </div>
+    );
+  });
+
   return (
     <StyledBoard>
-      <h2>Messages</h2>
       {!!messages && (
-        <div>
-          {messages.map(message => (
-            <div
-              key={message._id}
-              className="messages messages-animate"
-              style={{
-                backgroundColor: getRandomColor()
-              }}>
-              <h3>{message.username}</h3>
-              <p>{message.text}</p>
-            </div>
-          ))}
-        </div>
+        <section className="messages-section">{showMessages}</section>
       )}
     </StyledBoard>
   );
 };
 
 const StyledBoard = styled.main`
-  .messages {
+  .messages-section {
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+  }
+  h3{
+    padding-bottom:.5rem ;
+  }
+  .message {
+    color: #363f4d;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: fit-content;
+    max-width: 100%;
+    position: relative;
+    white-space: initial;
+    border: none;
+
+    &::after {
+      content: "";
+      bottom: 98%;
+      left: .7rem;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: inherit;
+      border-width: 7px;
+      margin-left: -7px;
+    }
   }
   .messages-animate {
     -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
