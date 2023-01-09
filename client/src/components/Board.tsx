@@ -15,7 +15,7 @@ const Board = ({ messages }: BoardProps) => {
         <div className="message-header">
           <h3>{message.username}</h3>
           <p>
-            {new Date(message.added).toLocaleDateString("en-US", {
+            {new Date(message.added).toLocaleDateString("default", {
               year: "numeric",
               month: "2-digit",
               day: "2-digit",
