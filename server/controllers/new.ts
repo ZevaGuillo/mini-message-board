@@ -6,8 +6,9 @@ export const getMessages = async (req: Request, res: Response) => {
     const { limit = 10, since = 0 } = req.query;
 
     const messages = await Message.find()
-        .skip(Number(since))
-        .limit(Number(limit))
+    // TODO: pages
+        // .skip(Number(since))
+        // .limit(Number(limit))
 
     res.json({
         messages
