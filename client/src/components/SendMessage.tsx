@@ -12,7 +12,7 @@ type FormValues = {
 };
 
 type SendMessageProps = {
-  setMessages: React.Dispatch<React.SetStateAction<Message[] | undefined>>;
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 };
 
 const SendMessage = ({ setMessages }: SendMessageProps) => {

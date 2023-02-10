@@ -1,16 +1,31 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Message } from "../types/messageType";
 import { getRandomColor } from "../utils/getColor";
+import Loading from "./Loading";
+
 type BoardProps = {
   messages: Message[] | undefined;
+  last: boolean;
+  loadMoreRef: React.RefObject<HTMLDivElement>;
 };
 
-const Board = ({ messages }: BoardProps) => {
+const Board = ({ messages, loadMoreRef, last }: BoardProps) => {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef?.current?.scrollIntoView({
+      block: "end",
+      behavior: "smooth",
+    });
+  });
+
   const showMessages = messages?.map(message => {
     let color = getRandomColor();
     return (
       <div
         key={message._id}
+        ref={messagesEndRef}
         className="messages-animate">
         <div className="message-header">
           <h3>{message.username}</h3>
@@ -39,16 +54,38 @@ const Board = ({ messages }: BoardProps) => {
   return (
     <StyledBoard>
       {!!messages && (
-        <section className="messages-section">{showMessages}</section>
+        <section className="messages-section">
+          {!last && (
+            <div
+              className={`loader ${messages.length === 0 && 'height' }`}
+              ref={loadMoreRef}>
+              <Loading />
+            </div>
+          )}
+          {showMessages}
+        </section>
       )}
     </StyledBoard>
   );
 };
 
 const StyledBoard = styled.main`
+
+  .loader {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .height{
+    height: 100%;
+  }
+
   .messages-section {
+    height: 100%;
     padding: 0.5rem 1rem;
-    overflow: hidden;
+    overflow-y: hidden;
   }
   h3 {
     padding-bottom: 0.5rem;
