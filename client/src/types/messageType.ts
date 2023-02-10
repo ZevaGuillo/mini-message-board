@@ -4,3 +4,8 @@ export interface Message {
     text: string,
     added: string,
 }
+
+export interface MessageForm {
+    username: string,
+    text: string,
+}
