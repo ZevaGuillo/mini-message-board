@@ -8,8 +8,8 @@ const router = Router();
 router.get('/',getMessages);
 
 router.post('/',[
-    check('username', 'Username is requires').exists(),
-    check('text', 'Text is requires').exists(),
+    check('username', 'Username is requires').not().isEmpty(),
+    check('text', 'Text is requires').not().isEmpty(),
     validateFields
 ],newMessage);
 
