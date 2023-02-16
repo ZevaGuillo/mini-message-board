@@ -30,7 +30,10 @@ const SendMessage = ({ setMessages }: SendMessageProps) => {
         console.log(res);
         setMessages(m => [...m!, res.messageDB]);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(()=>{
+        actions.resetForm()
+      })
   };
 
   return (
